@@ -1,31 +1,30 @@
+
+import java.util.*;
+import java.text.*;
+import java.io.*;
+
 public class Tester {
     public static void main(String[] s) {
-		Supplier S1 = new Supplier(1, "Cereal");
-		Supplier S2 = new Supplier(21, "Woodcutters");
-		final SupplierList S;
-		S = SupplierList.instance();
-		System.out.println(S1.get_ID());
-		System.out.println(S1.get_name());
-		System.out.println(S2.get_ID());
-		System.out.println(S2.get_name());
-		S1.create_item(1.20, "CHX", "Chex's mix", "price per box"); //i will hit 1 to add
-		S1.create_item(1.45, "SWD", "Saw Dust", "price per pound"); //i will hit 1 to add
-		S1.grab_item(0);//i will hit one to add
-		S1.print_list();
-		S1.grab_item(2);//i will hit 2 to remove_product
-		S1.print_list();
-		S2.create_item(2.23, "SPR_P", "Spruce Planks", "Price per cubic meter");//hit 1
-		S2.create_item(2.05, "BIR_L", "Birch Logs", "Price per cubic meter");//hit 1
-		S2.create_item(4.62, "OAK_S", "Stained Oak Planks", "Price per cubic meter");//hit 1
-		S2.print_list();
-		S2.grab_item(0);//delete it
-		S2.print_list();
-		S2.set_name("Minnesote Logs");
-		System.out.println(S2.get_name());
-		
-		//testing SupplierList
-		S.insertSupplier(S1);
-		S.insertSupplier(S2);
-		System.out.println(S.toString());
-	}
+     Product P1 = new Product("Headphone", "p1",20, 2000);
+     Product P2 = new Product("Phone","p2", 10, 4000);
+     final ProductList P;
+     P = ProductList.instance();
+  
+
+     // Testing Product Class
+     System.out.println(P1.getName() + " should be Headphone.");
+     System.out.println(P2.getName() + " should be Phone.");
+
+     System.out.println(P1.getQuantity() + " should be 20.");
+     System.out.println(P2.getQuantity() + " should be 10.");
+
+ System.out.println(P1.getPrice() + " should be 2000.");
+     System.out.println(P2.getPrice() + " should be 4000.");
+
+// Testing ProductList Class
+     P.insertProduct(P1);
+     P.insertProduct(P2);
+     System.out.println(P.toString());
+
+  }
 }
