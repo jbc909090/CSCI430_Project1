@@ -21,10 +21,10 @@ public class Supplier implements Serializable {
 		return ID;
 	}
 	// get & set for name, it can be both accessed and changed
-	public void set_name (String name) {
+	public void setName (String name) {
 		this.name = name;
 	}
-	public String get_name () {
+	public String getName () {
 		return name;
 	}
 	//linked list management functions below
