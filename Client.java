@@ -43,13 +43,9 @@ public class Client implements Serializable {
   
   public void AddToCart(Product pr, int amount)
   {
-	pr.toString();
-	System.out.println("  " + amount);
-	 /*
 		userCart.add(pr);
 		amount += pr.getQuantity;
 		pr.setQuantity(amount);
-  */
   }
   
   public void DisplayCart()
