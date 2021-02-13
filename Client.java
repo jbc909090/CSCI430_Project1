@@ -8,7 +8,7 @@ public class Client implements Serializable {
   private String address;
   private int id;
 //  private static final String MEMBER_STRING = "M";
-  private LinkedList<Product> userCart = new LinkedList<Product>();
+  private List<Product> userCart = new LinkedList<Product>();
   public  Client (String name,int ID , String address) {
     this.name = name;
     this.address = address;
