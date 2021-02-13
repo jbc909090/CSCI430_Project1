@@ -73,4 +73,21 @@ public class ProductList implements Serializable {
     public String toString() {
         return products.toString();
     }
+    public int IDcheck (String ID) {
+        for (int i=0; i < products.size(); i++) {
+            Product temp = products.get(i);
+            if (ID == temp.getId()) {
+                System.out.println("ID found");
+                return i;
+            }
+        }
+        System.out.println("ERROR: ID is not in database");
+        return -1;
+    }
+    public Product get_listed_obj (int position) {
+        return products.get(position);
+    }
+    public void set_listed_obj (int position, Supplier update) {
+        products.set(position, update);
+    }
 }
