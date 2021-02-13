@@ -54,7 +54,7 @@ public class Client implements Serializable {
 		{	
 			System.out.println(pr.toString());
 		}	
-		System.out.println("Total cost:" + userCart.getTotal());
+		System.out.println("Total cost:" + getTotal());
   }
   
 	public int getTotal()
