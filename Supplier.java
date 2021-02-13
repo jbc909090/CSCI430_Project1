@@ -43,28 +43,54 @@ public class Supplier implements Serializable {
 		use_item(item);
 	}
 	//the use_item takes a supply instance, uses a scanner for user input
-	//it can add or delete. Modification requires deleting it and creating new instance currently
+	//it can add or delete. Later editting was added.
 	//in future may include printing item
 	public void use_item (Supply item) {
 		Scanner myObj = new Scanner(System.in); //create scanner object
-		System.out.println("Add[1] or Delete[2] the instance from the list?");
+		System.out.println("Add[1], Delete[2], or Update [3] the instance in the list?");
 		int choice = myObj.nextInt();
 		switch (choice) {
 			case 1: add_product(item);
 			break;
 			case 2: remove_product(item);
 			break;
-			default: System.out.println("neither action chosen, no action taken");
+			case 3: edit_product(item);
+			break;
+			default: System.out.println("no action chosen, no action taken");
 		}
 	}
-	//currently public may become private and only useable via other methods, currently not for testing
-	//takes a supply instance adds it to the linked list
+	//currently public may become private and only useable via other methods, currently public for testing
+	//takes a supply instance adds it to the linked list (may be used in multiple methods)
 	public void add_product(Supply item) {
 		products.add(item);
 	}
-	//same situation as add_product may become private later but is public for testing purposes
+	//same situation as add_product may become private later but is public for testing purposes and may have further use in future methods
 	public void remove_product (Supply item) {
 		products.remove(item);
+	}
+	public void edit_product (Supply item) {
+		Scanner myObj = new Scanner(System.in); //create scanner object
+		int position = products.indexOf(item);
+		System.out.println("Edit: [1] Price, [2] Price information, and [3] Product Name");
+		int choice = myObj.nextInt();
+		switch (choice) {
+			case 1: System.out.println(item.get_price_info() + "\nTo what price?");
+			int price = myObj.nextInt();
+			item.set_price(price);
+			products.set(position, item);
+			break;
+			case 2: System.out.println(item.get_price() + "\nWhat price_information?");
+			String price_info = myObj.nextLine();
+			item.set_price_info(price_info);
+			products.set(position, item);
+			break;
+			case 3: System.out.println(item.get_name() + "\nTo what name?");
+			String name = myObj.nextLine();
+			item.set_name(name);
+			products.set(position, item);
+			break;
+			default: System.out.println("No action chosen, no action take");
+		}
 	}
 	//lastly this prints the whole linked list safely
 	//no inputs or outputs
@@ -89,6 +115,27 @@ class Supply {
 		this.ID = ID;
 		this.name = name;
 		this.price_info = price_info;
+	}
+	public String get_price_info () {
+		return price_info;
+	}
+	public String get_ID () {
+		return ID;
+	}
+	public String get_name () {
+		return name;
+	}
+	public int get_price () {
+		return price;
+	}
+	public void set_price (int price) {
+		this.price = price;
+	}
+	public void set_price_info (String price_info) {
+		this.price_info = price_info;
+	}
+	public void set_name (String name) {
+		this.name = name;
 	}
 	//class for printing the data
 	public void print () {
