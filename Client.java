@@ -44,7 +44,7 @@ public class Client implements Serializable {
   public void AddToCart(Product pr, int amount)
   {
 		userCart.add(pr);
-		amount += pr.getQuantity;
+		amount += pr.getQuantity();
 		pr.setQuantity(amount);
   }
   
