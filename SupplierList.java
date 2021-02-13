@@ -62,4 +62,18 @@ public class SupplierList implements Serializable {
     public String toString() {
         return suppliers.toString();
     }
+    
+    //adding a function for going through the linked list finding a specfic ID
+    //takes a int, returns a int (both are to be supplier IDs)
+    public int IDcheck (int ID) {
+        for (int i=0; i < suppliers.size(); i++) {
+            Supplier temp = suppliers.get(i);
+            if (ID == temp.get_ID()) {
+                System.out.println("ID found");
+                return i;
+            }
+        }
+        System.out.println("ERROR: ID is not in database");
+        return -1;
+    }
 }
