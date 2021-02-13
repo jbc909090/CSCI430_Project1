@@ -135,32 +135,67 @@ public class UserInterface {
 		int choice = Integer.parseInt(getToken("Enter your choice: "));
 		
 		switch (choice) {
-			case 1:
-				//editProductField();
-				System.out.println("Editing product");
+			case 1: String ID = getToken("Enter ID of product to edit");
+				int position = productList.IDcheck(ID);
+				Product item = productList.get_listed_obj(position);
+				item = edit_product(item);
+				productList.set_listed_obj(position, item);
 				break;
-			case 2:
-				//editClientField();
-				System.out.println("Editing client");
+			case 2: int ID = Integer.parseInt(getToken("Enter ID of client to edit"));
+				int position = clientList.IDcheck(ID);
+				Client item = clientList.get_listed_obj(position);
+				item = edit_client(item);
+				clientList.set_listed_obj(position, item);
 				break;
-			case 3:
-				//editSupplierField();
-				System.out.println("Editing supplier");
+			case 3: int ID = Integer.parseInt(getToken("Enter ID of supplier to edit"));
+				int position = supplierList.IDcheck(ID);
+				Supplier item = supplierList.get_listed_obj(position);
+				item = edit_supplier(item);
+				supplierList.set_listed_obj(position, item);
 				break;
 			default:
 				System.out.println("Incorrect choice");
 		}	
 	}
-	
-	public void editProductField() {
+	public Supplier edit_supplier (Supplier item) {
+		String userEdit = getToken("Edit NAME?");
+		switch (userEdit) {
+			case NAME: String name = getToken("To what name?");
+				item.setName(name);
+				break;
+			default: System.out.println("no action chosen, none taken");
+		}
+		return item;
 	}
-
-	public void editClientField() {
+	public Supplier edit_client (Client item) {
+		String userEdit = getToken("Edit NAME or ADDRESS");
+		switch (userEdit) {
+			case NAME: String name = getToken("To what name?");
+				item.setName(name);
+				break;
+			case ADDRESS: String address = getToken("To what address?");
+				item.setAddress(address);
+				break;
+			default: System.out.println("no action chosen, none taken");
+		}
+		return item;
 	}
-
-	public void editSupplierField() {
+	public Supplier edit_product (Product item) {
+		String userEdit = getToken("Edit NAME, PRICE, OR QUANTITY");
+		switch (userEdit) {
+			case NAME: String name = getToken("To what name?");
+				item.setName(name);
+				break;
+			case PRICE: int price = Integer.parseInt(getToken("To what price"));
+				item.setPrice(price);
+				break;
+			case QUANTITY: int quantity = Integer.parseInt(getToken("To what quantity"));
+				item.setQuantity(quantity);
+				break;
+			default: System.out.println("no action chosen, none taken");
+		}
+		return item;
 	}
-
 	public void process() {
 		int command;
 		menu();
