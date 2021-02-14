@@ -114,7 +114,7 @@ public class UserInterface {
 
 		successful = supplierList.insertSupplier(newSupplier);
 		if (successful) {
-			System.out.println("Supplier with name " + newSupplier.get_name() + " and ID " + newSupplier.get_ID() + " added successfully");
+			System.out.println("Supplier with name " + newSupplier.getName() + " and ID " + newSupplier.get_ID() + " added successfully");
 		} else {
 			System.out.println("Issue adding supplier!");
 		}
@@ -133,63 +133,64 @@ public class UserInterface {
 		System.out.println("2. Client");
 		System.out.println("3. Supplier");
 		int choice = Integer.parseInt(getToken("Enter your choice: "));
-		
+		String id;
+		int ID, position;
 		switch (choice) {
-			case 1: String ID = getToken("Enter ID of product to edit");
-				int position = productList.IDcheck(ID);
-				Product item = productList.get_listed_obj(position);
-				item = edit_product(item);
-				productList.set_listed_obj(position, item);
+			case 1: id = getToken("Enter ID of product to edit");
+				position = productList.IDcheck(id);
+				Product itemP = productList.get_listed_obj(position);
+				itemP = edit_product(itemP);
+				productList.set_listed_obj(position, itemP);
 				break;
-			case 2: int ID = Integer.parseInt(getToken("Enter ID of client to edit"));
-				int position = clientList.IDcheck(ID);
-				Client item = clientList.get_listed_obj(position);
-				item = edit_client(item);
-				clientList.set_listed_obj(position, item);
+			case 2: ID = Integer.parseInt(getToken("Enter ID of client to edit"));
+				position = clientList.IDcheck(ID);
+				Client itemC = clientList.get_listed_obj(position);
+				itemC = edit_client(itemC);
+				clientList.set_listed_obj(position, itemC);
 				break;
-			case 3: int ID = Integer.parseInt(getToken("Enter ID of supplier to edit"));
-				int position = supplierList.IDcheck(ID);
-				Supplier item = supplierList.get_listed_obj(position);
-				item = edit_supplier(item);
-				supplierList.set_listed_obj(position, item);
+			case 3: ID = Integer.parseInt(getToken("Enter ID of supplier to edit"));
+				position = supplierList.IDcheck(ID);
+				Supplier itemS = supplierList.get_listed_obj(position);
+				itemS = edit_supplier(itemS);
+				supplierList.set_listed_obj(position, itemS);
 				break;
 			default:
 				System.out.println("Incorrect choice");
 		}	
 	}
 	public Supplier edit_supplier (Supplier item) {
-		String userEdit = getToken("Edit NAME?");
+		int userEdit = Integer.parseInt(getToken("Edit NAME[1]"));
 		switch (userEdit) {
-			case NAME: String name = getToken("To what name?");
+			case 1: String name = getToken("To what name?");
 				item.setName(name);
 				break;
 			default: System.out.println("no action chosen, none taken");
 		}
 		return item;
 	}
-	public Supplier edit_client (Client item) {
-		String userEdit = getToken("Edit NAME or ADDRESS");
+	public Client edit_client (Client item) {
+		int userEdit = Integer.parseInt(getToken("Edit NAME[1] or ADDRESS[2]"));
 		switch (userEdit) {
-			case NAME: String name = getToken("To what name?");
+			case 1: String name = getToken("To what name?");
 				item.setName(name);
 				break;
-			case ADDRESS: String address = getToken("To what address?");
+			case 2: String address = getToken("To what address?");
 				item.setAddress(address);
 				break;
 			default: System.out.println("no action chosen, none taken");
 		}
 		return item;
 	}
-	public Supplier edit_product (Product item) {
-		String userEdit = getToken("Edit NAME, PRICE, OR QUANTITY");
+	public Product edit_product (Product item) {
+		int userEdit = Integer.parseInt(getToken("Edit NAME[1], PRICE[2], or QUANTITY[3]"));
 		switch (userEdit) {
-			case NAME: String name = getToken("To what name?");
+			case 1: String name = getToken("To what name?");
 				item.setName(name);
 				break;
-			case PRICE: int price = Integer.parseInt(getToken("To what price"));
+			case 2: int price = Integer.parseInt(getToken("To what price"));
 				item.setPrice(price);
 				break;
-			case QUANTITY: int quantity = Integer.parseInt(getToken("To what quantity"));
+			case 3: int quantity = Integer.parseInt(getToken("To what quantity"));
 				item.setQuantity(quantity);
 				break;
 			default: System.out.println("no action chosen, none taken");
